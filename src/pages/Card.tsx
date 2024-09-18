@@ -1,11 +1,11 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import RingLoader from "react-spinners/RingLoader";
+import Switch from "react-switch";
 import CardComponents from "../components/cardComponents";
+import AllData from "../data/list.json";
+import { userContext } from "../store/createContextStore";
 import "../style/card.scss";
 import "../style/popStyle.scss";
-import Switch from "react-switch";
-import RingLoader from "react-spinners/RingLoader";
-import { userContext } from "../store/createContextStore";
-import AllData from "../data/list.json";
 
 export default function Cards() {
   const { get } = useContext(userContext);
@@ -26,7 +26,7 @@ export default function Cards() {
 
   useEffect(() => {
     setSpin(true);
-    setTimeout(() => {  
+    setTimeout(() => {
       setSpin(false);
     }, 2500);
   }, []);
@@ -69,7 +69,6 @@ export default function Cards() {
             return (
               <div key={list.id}>
                 <CardComponents {...list} />
-                <span>No Data Available</span>
               </div>
             );
           })}
